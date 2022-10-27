@@ -2,6 +2,7 @@ totalGridSize = 480;
 const container = document.querySelector('.grid-container');
 var squares;
 var penColor = 111111;
+var random = false;
 //var resetValue = 24;
 
 createGrid(24);
@@ -32,14 +33,11 @@ function createGrid(gridSize) {
         square.addEventListener('mouseover', function(e) {
             if (e.buttons == 1 || e.buttons == 3) {
                 e.target.style.background = "#" + penColor;
+                if (random) {
+                    penColor = Math.floor(Math.random() * 16777215).toString(16);
+                }
             }
         });
-    });
-}
-
-function resetGrid() {
-    squares.forEach((square) => {
-        square.style.background = "#eeeeee";
     });
 }
 
@@ -52,8 +50,24 @@ function removeGrid() {
 
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", function(e) {
-    resetGrid();
+    squares.forEach((square) => {
+        square.style.background = "#eeeeee";
+    });
 });
+
+const colormode = document.querySelector(".color-mode");
+colormode.addEventListener("click", function(e) {
+    if (random) {
+        e.target.textContent = "Color Mode: Black";
+        penColor = "111111";
+        random = false;
+    }
+    else {
+        e.target.textContent = "Color Mode: Random";
+        random = true;
+    }
+    
+})
 
 var slider = document.getElementById('myRange');
 const sliderlabel = document.querySelector('.slider-label');

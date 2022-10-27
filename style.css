@@ -34,12 +34,19 @@ body {
     font-weight: bold;
 }
 
+.color-mode {
+    font-size: 18px;
+}
+
+.clear {
+    font-size: 32px;
+}
+
 .menu button {
     background: transparent;
     align-self: stretch;
     border: none;
     color: black;
-    font-size: 32px;
     min-width: 256px;
     min-height: 64px;
     padding: 8px;
